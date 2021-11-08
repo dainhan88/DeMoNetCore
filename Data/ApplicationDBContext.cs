@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DeMoMVCNetCore.Models;
+namespace DeMoMVCNetCore.Data{
 
     public class ApplicationDBContext : DbContext
     {
@@ -20,3 +21,4 @@ using DeMoMVCNetCore.Models;
 
         public DbSet<DeMoMVCNetCore.Models.Employees> Employees { get; set; }
     }
+}

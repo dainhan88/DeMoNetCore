@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DeMoMVCNetCore.Models;
-
+using DeMoMVCNetCore.Data;
 namespace DeMoMVCNetCore.Controllers
 {
     public class PersonController : Controller
