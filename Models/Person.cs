@@ -9,7 +9,9 @@ namespace DeMoMVCNetCore.Models
         [Display(Name ="Id") ]
         public string PersonID { get; set; }
        
+        [Display(Name ="Tên Thành Viên")]
         public string PersonName { get; set; }
+        [Display(Name ="Tiêu Đề")]
         public string Title { get; internal set; }
     }
 }
