@@ -15,68 +15,88 @@ namespace DeMoMVCNetCore.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.11");
 
-            modelBuilder.Entity("DeMoMVCNetCore.Models.Employees", b =>
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Category", b =>
                 {
-                    b.Property<string>("EmployeeID")
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("EmployeeName")
-                        .HasColumnType("TEXT");
+                    b.HasKey("CategoryID");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("EmployeeID");
-
-                    b.ToTable("Employees");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.Person", b =>
                 {
-                    b.Property<string>("PersonID")
+                    b.Property<int>("PerSonID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PersonName")
+                    b.Property<string>("FullName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                    b.HasKey("PerSonID");
 
-                    b.HasKey("PersonID");
+                    b.ToTable("people");
 
-                    b.ToTable("Person");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
                 });
 
-            modelBuilder.Entity("DeMoMVCNetCore.Models.Products", b =>
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Product", b =>
                 {
-                    b.Property<string>("ProductID")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ProductID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantity")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Unitprice")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ProductID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DeMoMVCNetCore.Models.Students", b =>
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Student", b =>
                 {
-                    b.Property<string>("StudenID")
+                    b.HasBaseType("DeMoMVCNetCore.Models.Person");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("University")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StudentName")
-                        .HasColumnType("TEXT");
+                    b.ToTable("people");
 
-                    b.HasKey("StudenID");
+                    b.HasDiscriminator().HasValue("Student");
+                });
 
-                    b.ToTable("Students");
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Product", b =>
+                {
+                    b.HasOne("DeMoMVCNetCore.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,42 +15,36 @@ namespace DeMoMVCNetCore.Models
                     DbContextOptions<ApplicationDBContext>>()))
             {
                 // Look for any movies.
-                if (context.Products.Any())
+                if (context.Students.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.Products.AddRange(
-                    new Products
+                context.Students.AddRange(
+                    new Student
                     {
-                        ProductID = "000001",
-                        ProductName = "VŨ Văn Đức",
-                        Unitprice = "abc",
-                        Quantity = "123",
+                        StudentID = 1,
+                         University = "Phạm Văn Nhân",
+                     
+                    },
+                    new Student
+                    {
+                        StudentID = 2,
+                        University = "Dinh Thế ANh",                       
                     },
 
-                    new Products
+                    new Student
                     {
-                        ProductID = "000002",
-                        ProductName = "Dinh Thế ANh",
-                        Unitprice = "CBA",
-                        Quantity = "1234",
+                        StudentID = 3,
+                        University = "Phạm Văn Nhân",
+                      
                     },
 
-                    new Products
+                    new Student
                     {
-                        ProductID = "000003",
-                        ProductName = "Phạm Văn Nhân",
-                        Unitprice = "À Lố",
-                        Quantity = "0021324"
-                    },
-
-                    new Products
-                    {
-                        ProductID = "000004",
-                        ProductName = "Nguyễn Quang Lâm",
-                        Unitprice = "Bề lố",
-                        Quantity = "00213244"
+                        StudentID = 4,
+                        University = "Nguyễn Quang Lâm",
+                       
                     }
                 );
                 context.SaveChanges();

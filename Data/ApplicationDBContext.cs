@@ -12,13 +12,11 @@ namespace DeMoMVCNetCore.Data{
             : base(options)
         {
         }
-
-        public DbSet<DeMoMVCNetCore.Models.Person> Person { get; set; }
-
-        public DbSet<DeMoMVCNetCore.Models.Students> Students { get; set; }
-
-        public DbSet<DeMoMVCNetCore.Models.Products> Products { get; set; }
-
-        public DbSet<DeMoMVCNetCore.Models.Employees> Employees { get; set; }
+      
+       
+        public DbSet<DeMoMVCNetCore.Models.Person> people { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.Student> Students { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.Product> Products { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.Category> Categories { get; set; }
     }
 }

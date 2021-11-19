@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DeMoMVCNetCore.Models;
 using DeMoMVCNetCore.Data;
+using DeMoMVCNetCore.Models;
 
 namespace DeMoMVCNetCore.Controllers
 {
@@ -26,21 +26,21 @@ namespace DeMoMVCNetCore.Controllers
         }
 
         // GET: Students/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var students = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudenID == id);
-            if (students == null)
+            var student = await _context.Students
+                .FirstOrDefaultAsync(m => m.PerSonID == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(students);
+            return View(student);
         }
 
         // GET: Students/Create
@@ -54,31 +54,31 @@ namespace DeMoMVCNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudenID,StudentName")] Students students)
+        public async Task<IActionResult> Create([Bind("StudentID,University,PerSonID,FullName")] Student student)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(students);
+                _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(students);
+            return View(student);
         }
 
         // GET: Students/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var students = await _context.Students.FindAsync(id);
-            if (students == null)
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(students);
+            return View(student);
         }
 
         // POST: Students/Edit/5
@@ -86,9 +86,9 @@ namespace DeMoMVCNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StudenID,StudentName")] Students students)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentID,University,PerSonID,FullName")] Student student)
         {
-            if (id != students.StudenID)
+            if (id != student.PerSonID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace DeMoMVCNetCore.Controllers
             {
                 try
                 {
-                    _context.Update(students);
+                    _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentsExists(students.StudenID))
+                    if (!StudentExists(student.PerSonID))
                     {
                         return NotFound();
                     }
@@ -113,41 +113,41 @@ namespace DeMoMVCNetCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(students);
+            return View(student);
         }
 
         // GET: Students/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var students = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudenID == id);
-            if (students == null)
+            var student = await _context.Students
+                .FirstOrDefaultAsync(m => m.PerSonID == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(students);
+            return View(student);
         }
 
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var students = await _context.Students.FindAsync(id);
-            _context.Students.Remove(students);
+            var student = await _context.Students.FindAsync(id);
+            _context.Students.Remove(student);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentsExists(string id)
+        private bool StudentExists(int id)
         {
-            return _context.Students.Any(e => e.StudenID == id);
+            return _context.Students.Any(e => e.PerSonID == id);
         }
     }
 }
