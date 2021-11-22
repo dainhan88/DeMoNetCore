@@ -18,5 +18,7 @@ namespace DeMoMVCNetCore.Data{
         public DbSet<DeMoMVCNetCore.Models.Student> Students { get; set; }
         public DbSet<DeMoMVCNetCore.Models.Product> Products { get; set; }
         public DbSet<DeMoMVCNetCore.Models.Category> Categories { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.Employees> Employees { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.HiHi> HiHi { get; set; }
     }
 }

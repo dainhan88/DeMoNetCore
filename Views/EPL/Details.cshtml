@@ -1,0 +1,36 @@
+@model DeMoMVCNetCore.Models.Employees
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Employees</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EplID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EplID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EplName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EplName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PerSonID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

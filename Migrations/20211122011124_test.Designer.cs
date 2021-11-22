@@ -2,14 +2,16 @@
 using DeMoMVCNetCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DeMoMVCNetCore.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211122011124_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +122,7 @@ namespace DeMoMVCNetCore.Migrations
             modelBuilder.Entity("DeMoMVCNetCore.Models.HiHi", b =>
                 {
                     b.HasOne("DeMoMVCNetCore.Models.Category", "Category")
-                        .WithMany("HiHis")
+                        .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -141,8 +143,6 @@ namespace DeMoMVCNetCore.Migrations
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.Category", b =>
                 {
-                    b.Navigation("HiHis");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

@@ -1,4 +1,4 @@
-@model IEnumerable<DeMoMVCNetCore.Models.Person>
+@model IEnumerable<DeMoMVCNetCore.Models.Employees>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,7 +12,12 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>
+                @Html.DisplayNameFor(model => model.EplID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EplName)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
@@ -23,7 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PerSonID)
+                @Html.DisplayFor(modelItem => item.EplID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EplName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)

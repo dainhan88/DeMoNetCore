@@ -185,3 +185,13 @@ G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Categories\Delete.cshtml.
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Categories\Details.cshtml.g.cs
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Categories\Edit.cshtml.g.cs
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Categories\Index.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\EPL\Create.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\EPL\Delete.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\EPL\Details.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\EPL\Edit.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\EPL\Index.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Create.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Delete.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Details.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Edit.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Index.cshtml.g.cs

@@ -15624,6 +15624,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\HaHa\\Create.cshtml",
+      "TargetPath": "Views\\HaHa\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\Products\\Edit.cshtml",
       "TargetPath": "Views\\Products\\Edit.cshtml",
       "FileKind": "mvc"
@@ -15659,8 +15664,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\EPL\\Details.cshtml",
+      "TargetPath": "Views\\EPL\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\HaHa\\Edit.cshtml",
+      "TargetPath": "Views\\HaHa\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\People\\Edit.cshtml",
       "TargetPath": "Views\\People\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\HaHa\\Delete.cshtml",
+      "TargetPath": "Views\\HaHa\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15676,6 +15696,11 @@
     {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\People\\Details.cshtml",
       "TargetPath": "Views\\People\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\EPL\\Edit.cshtml",
+      "TargetPath": "Views\\EPL\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15704,6 +15729,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\EPL\\Create.cshtml",
+      "TargetPath": "Views\\EPL\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\Students\\Delete.cshtml",
       "TargetPath": "Views\\Students\\Delete.cshtml",
       "FileKind": "mvc"
@@ -15716,6 +15746,11 @@
     {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\People\\Create.cshtml",
       "TargetPath": "Views\\People\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\EPL\\Delete.cshtml",
+      "TargetPath": "Views\\EPL\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15734,6 +15769,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\EPL\\Index.cshtml",
+      "TargetPath": "Views\\EPL\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\Students\\Create.cshtml",
       "TargetPath": "Views\\Students\\Create.cshtml",
       "FileKind": "mvc"
@@ -15744,8 +15784,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\HaHa\\Details.cshtml",
+      "TargetPath": "Views\\HaHa\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\Students\\Details.cshtml",
       "TargetPath": "Views\\Students\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\NetCore\\DeMoMVCNetCore\\Views\\HaHa\\Index.cshtml",
+      "TargetPath": "Views\\HaHa\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
