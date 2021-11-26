@@ -24,9 +24,28 @@ namespace DeMoMVCNetCore.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("KeySearch")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MovieGenre")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Demo", b =>
+                {
+                    b.Property<string>("DemoID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DemoName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DemoID");
+
+                    b.ToTable("Demo");
                 });
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.HiHi", b =>

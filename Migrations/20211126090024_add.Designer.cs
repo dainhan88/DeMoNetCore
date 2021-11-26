@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeMoMVCNetCore.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211119084719_3")]
-    partial class _3
+    [Migration("20211126090024_add")]
+    partial class add
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,47 @@ namespace DeMoMVCNetCore.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("KeySearch")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MovieGenre")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Demo", b =>
+                {
+                    b.Property<string>("DemoID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DemoName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DemoID");
+
+                    b.ToTable("Demo");
+                });
+
+            modelBuilder.Entity("DeMoMVCNetCore.Models.HiHi", b =>
+                {
+                    b.Property<int>("HiHiId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("HiHIname")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("HiHiId");
+
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("HiHi");
                 });
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.Person", b =>
@@ -70,6 +108,21 @@ namespace DeMoMVCNetCore.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Employees", b =>
+                {
+                    b.HasBaseType("DeMoMVCNetCore.Models.Person");
+
+                    b.Property<int>("EplID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EplName")
+                        .HasColumnType("TEXT");
+
+                    b.ToTable("people");
+
+                    b.HasDiscriminator().HasValue("Employees");
+                });
+
             modelBuilder.Entity("DeMoMVCNetCore.Models.Student", b =>
                 {
                     b.HasBaseType("DeMoMVCNetCore.Models.Person");
@@ -85,6 +138,17 @@ namespace DeMoMVCNetCore.Migrations
                     b.HasDiscriminator().HasValue("Student");
                 });
 
+            modelBuilder.Entity("DeMoMVCNetCore.Models.HiHi", b =>
+                {
+                    b.HasOne("DeMoMVCNetCore.Models.Category", "Category")
+                        .WithMany("HiHis")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("DeMoMVCNetCore.Models.Product", b =>
                 {
                     b.HasOne("DeMoMVCNetCore.Models.Category", "Category")
@@ -98,6 +162,8 @@ namespace DeMoMVCNetCore.Migrations
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.Category", b =>
                 {
+                    b.Navigation("HiHis");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

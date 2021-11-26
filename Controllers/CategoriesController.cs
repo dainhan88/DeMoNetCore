@@ -20,9 +20,39 @@ namespace DeMoMVCNetCore.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
+        // [HttpPost]      
+        //     public string Index(string keySearch, bool notUsed)
+        //     {
+        //         return "From [HttpPost]Index: filter on " + keySearch;
+        //     }
+        public async Task<IActionResult> Index(string movieGenre ,string keySearch)
         {
-            return View(await _context.Categories.ToListAsync());
+            IQueryable<string> genreQuery = from m in _context.Categories
+                                            orderby m.CategoryName
+                                            select m.CategoryName;
+
+
+            var model = from m in _context.Categories
+                 select m;
+
+            if (!String.IsNullOrEmpty(keySearch))
+            {
+                model = model.Where(s => s.CategoryName.Contains(keySearch));
+                return View(model);
+            }
+             if (!string.IsNullOrEmpty(movieGenre))
+            {
+                model = model.Where(x => x.CategoryName == movieGenre);
+                return View(model);
+            }
+
+            var cateTest = new TestSearch
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                CateTest = await model.ToListAsync()
+            };
+
+            return View(cateTest);
         }
 
         // GET: Categories/Details/5

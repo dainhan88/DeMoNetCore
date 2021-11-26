@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeMoMVCNetCore.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211122011215_test1")]
-    partial class test1
+    [Migration("20211126084221_colummCCateKey")]
+    partial class colummCCateKey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,28 @@ namespace DeMoMVCNetCore.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("KeySearch")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MovieGenre")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("DeMoMVCNetCore.Models.Demo", b =>
+                {
+                    b.Property<string>("DemoID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DemoName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DemoID");
+
+                    b.ToTable("Demo");
                 });
 
             modelBuilder.Entity("DeMoMVCNetCore.Models.HiHi", b =>

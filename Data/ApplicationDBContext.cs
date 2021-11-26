@@ -20,5 +20,6 @@ namespace DeMoMVCNetCore.Data{
         public DbSet<DeMoMVCNetCore.Models.Category> Categories { get; set; }
         public DbSet<DeMoMVCNetCore.Models.Employees> Employees { get; set; }
         public DbSet<DeMoMVCNetCore.Models.HiHi> HiHi { get; set; }
+        public DbSet<DeMoMVCNetCore.Models.Demo> Demo { get; set; }
     }
 }

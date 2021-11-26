@@ -195,3 +195,8 @@ G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Delete.cshtml.g.cs
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Details.cshtml.g.cs
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Edit.cshtml.g.cs
 G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\HaHa\Index.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Demos\Create.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Demos\Delete.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Demos\Details.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Demos\Edit.cshtml.g.cs
+G:\NetCore\DeMoMVCNetCore\obj\Debug\net5.0\Razor\Views\Demos\Index.cshtml.g.cs

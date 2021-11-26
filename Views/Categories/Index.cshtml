@@ -1,4 +1,4 @@
-@model IEnumerable<DeMoMVCNetCore.Models.Category>
+@model DeMoMVCNetCore.Models.TestSearch
 
 @{
     ViewData["Title"] = "Index";
@@ -9,20 +9,29 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Categories" asp-action="Index" method="get">
+    <p>
+         <select asp-for="CateGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
+        Name: <input type="text" asp-for="KeySearch" />
+        <input type="submit" value="filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
               <th>
-                @Html.DisplayNameFor(model => model.CategoryID)
+                @Html.DisplayNameFor(model => model.CateTest[0].CategoryID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
+                @Html.DisplayNameFor(model => model.CateTest[0].CategoryName)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.CateTest) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryID)
