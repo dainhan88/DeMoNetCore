@@ -1,0 +1,7 @@
+1 thư viện EPPlus.Core
+2 viết phương thức đọc dữ liệu từ file excel trả về datatable
+
+
+Trong controller
+3 đôi tượng IFormFile file
+4 alo

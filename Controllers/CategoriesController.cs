@@ -82,7 +82,7 @@ namespace DeMoMVCNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryID,CategoryName,Categorynote")] Category category)
+        public async Task<IActionResult> Create([Bind("CategoryID,CategoryName,Categorynote,quantity,CategoryDate")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace DeMoMVCNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryID,CategoryName,Categorynote")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryID,CategoryName,Categorynote,quantity,CategoryDate")] Category category)
         {
             if (id != category.CategoryID)
             {

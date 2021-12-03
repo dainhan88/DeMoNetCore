@@ -27,6 +27,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.CateTest[0].CategoryName)
             </th>
+             <th>
+                @Html.DisplayNameFor(model => model.CateTest[0].quantity)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.CateTest[0].CategoryDate)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CateTest[0].Categorynote)
             </th>
@@ -41,6 +47,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryDate)
             </td>
               <td>
                 @Html.DisplayFor(modelItem => item.Categorynote)
