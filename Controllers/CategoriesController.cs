@@ -7,18 +7,48 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DeMoMVCNetCore.Data;
 using DeMoMVCNetCore.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols;
+using System.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace DeMoMVCNetCore.Controllers
 {
     public class CategoriesController : Controller
     {
         private readonly ApplicationDBContext _context;
-
+        ExcelProcess  _excelPro = new ExcelProcess();   
+         
+         public IConfiguration Configuration {get;}
         public CategoriesController(ApplicationDBContext context)
         {
-            _context = context;
-        }
+            _context = context;    
+        }        
+        private int WriteDatatableToDatabase(DataTable dt)
+        {
+            try
+            {
+            var con = Configuration.GetConnectionString("ApplicationDBContext");
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
+            bulkCopy.DestinationTableName = "Categories";
+            bulkCopy.ColumnMappings.Add(1, "CategoryName");
+            bulkCopy.ColumnMappings.Add(2, "quanity");
+            bulkCopy.ColumnMappings.Add(3, "CategoryDate");
+            bulkCopy.ColumnMappings.Add(4, "CategoryNote");
 
+            bulkCopy.WriteToServer(dt);
+
+            }
+            catch
+            {
+                return 0;
+            }
+            return dt.Rows.Count;
+        }       
+
+ 
         // GET: Categories
         // [HttpPost]      
         //     public string Index(string keySearch, bool notUsed)
@@ -80,19 +110,67 @@ namespace DeMoMVCNetCore.Controllers
         // POST: Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryID,CategoryName,Categorynote,quantity,CategoryDate")] Category category)
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Create([Bind("CategoryID,CategoryName,Categorynote,quantity,CategoryDate")] Category category)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Add(category);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(category);
+        // }
+       [HttpPost] 
+        public async Task<IActionResult> Create([Bind("CategoryID,CategoryName,Categorynote,quantity,CategoryDate")]Category category,IFormFile abc) 
         {
-            if (ModelState.IsValid)
+            if (abc!=null)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
+                string fileExtension = Path.GetExtension(abc.FileName);
+                if (fileExtension != ".xls" && fileExtension != ".xlsx")
+                {
+                    ModelState.AddModelError("", "Please choose excel file to upload!");
+                }
+                else
+                {
+                    //rename file when upload to server
+                    //tao duong dan /Uploads/Excels de luu file upload len server
+                    var fileName = ".NetCore";
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", fileName + fileExtension);
+                    var fileLocation = new FileInfo(filePath).ToString();
 
+                    if (ModelState.IsValid)
+                    {
+                        //upload file to server
+                        if (abc.Length > 0)
+                        {
+                            _context.Add(category);
+                            await _context.SaveChangesAsync();
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                //save file to server
+                                await abc.CopyToAsync(stream);
+                                //read data from file and write to database
+                                //_excelPro la doi tuong xu ly file excel ExcelProcess
+                                var dt = _excelPro.ExcelToDataTable(fileLocation);
+                                //ghi du lieu datatable vao database                            
+                                if (category.CategoryID==0)
+                                {
+                                    WriteDatatableToDatabase (dt);
+                                }
+                                else
+                                {
+                                    WriteDatatableToDatabase (dt);
+                                }
+                            }
+                            return RedirectToAction(nameof(Index));
+                        }
+                    }
+                }
+            }
+            return View();
+        }
         // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -21,7 +21,7 @@ namespace DeMoMVCNetCore.Models{
         [Range(1, 100)]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]  
-        [Required(ErrorMessage ="Bạn chỉ được viết số từ 1 - 100 và trước dấu phẩy 18 ký tự và sau dấu , là 2 ký tự")]
+        [Required(ErrorMessage ="Bạn chỉ được viết số từ 1 - 100")]
         public decimal quantity { get; set; } 
 
 
