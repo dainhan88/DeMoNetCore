@@ -21,11 +21,12 @@ namespace DeMoMVCNetCore.Controllers
         private readonly ApplicationDBContext _context;
         ExcelProcess  _excelPro = new ExcelProcess();   
          
-         public IConfiguration Configuration {get;}
-        public CategoriesController(ApplicationDBContext context)
+
+        public CategoriesController(ApplicationDBContext context ) //IConfiguration Configuration)
         {
-            _context = context;    
+            _context = context;                
         }        
+        public IConfiguration Configuration {get;}
         private int WriteDatatableToDatabase(DataTable dt)
         {
             try
@@ -37,9 +38,7 @@ namespace DeMoMVCNetCore.Controllers
             bulkCopy.ColumnMappings.Add(2, "quanity");
             bulkCopy.ColumnMappings.Add(3, "CategoryDate");
             bulkCopy.ColumnMappings.Add(4, "CategoryNote");
-
             bulkCopy.WriteToServer(dt);
-
             }
             catch
             {
@@ -47,6 +46,8 @@ namespace DeMoMVCNetCore.Controllers
             }
             return dt.Rows.Count;
         }       
+
+        
 
  
         // GET: Categories
@@ -63,7 +64,7 @@ namespace DeMoMVCNetCore.Controllers
 
 
             var model = from m in _context.Categories
-                 select m;
+                        select m;
 
             if (!String.IsNullOrEmpty(keySearch))
             {
@@ -136,10 +137,9 @@ namespace DeMoMVCNetCore.Controllers
                 {
                     //rename file when upload to server
                     //tao duong dan /Uploads/Excels de luu file upload len server
-                    var fileName = ".NetCore";
+                    var fileName = "NetCore";
                     var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", fileName + fileExtension);
                     var fileLocation = new FileInfo(filePath).ToString();
-
                     if (ModelState.IsValid)
                     {
                         //upload file to server
@@ -169,7 +169,7 @@ namespace DeMoMVCNetCore.Controllers
                     }
                 }
             }
-            return View();
+            return View(category);
         }
         // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
